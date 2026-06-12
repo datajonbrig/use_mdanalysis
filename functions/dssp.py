@@ -1,0 +1,1 @@
+from MDAnalysis.analysis import dssp
