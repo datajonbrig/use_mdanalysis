@@ -1,7 +1,6 @@
 #Written by Audrey D. Prendergast
 #UNTESTED
-import MDAnalysis as mda
-import MDAnalysis.analysis.rms as rms
+from MDAnalysis.analysis import rms
 import matplotlib.pyplot as plt
 
 def run_rmsd():
