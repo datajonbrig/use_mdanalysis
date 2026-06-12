@@ -11,8 +11,11 @@ def run_rmsd():
 def plot_rmsd():
     rmsd = rmsd.rmsd.T
     time = rmsd[1]/1000
+    name = f"RMSD - {title}"
     plt.figure()
     plt.plot(time, rmsd, color, linestyle='-')
     plt.title(name)
     plt.xlabel("Time (ns)", fontsize=12)
     plt.ylabel("RMSD (Å)", fontsize=12)
+    plt.savefig()
+    plt.close()
