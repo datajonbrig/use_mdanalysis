@@ -21,9 +21,11 @@ def calculate_rmsf():
 def plot_rmsf():
     rmsf = rmsf.rmsd.T
     time = rmsf[1]/1000
+    name = f"RMSF - {title}"
     plt.figure()
     plt.plot(time, rmsf, color, linestyle='-')
     plt.title(name)
     plt.xlabel("Residue Index", fontsize=12)
     plt.ylabel("RMSF (Å)", fontsize=12)
     plt.savefig(out)
+    plt.close()
