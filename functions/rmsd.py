@@ -1,5 +1,6 @@
 #Written by Audrey D. Prendergast
 #UNTESTED
+#NEEDS: modifications to plot nicely with multiple chains both independent and averaged
 from MDAnalysis.analysis import rms
 import matplotlib.pyplot as plt
 
