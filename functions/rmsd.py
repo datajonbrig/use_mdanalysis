@@ -3,7 +3,7 @@ import MDAnalysis.analysis.rms as rms
 import matplotlib.pyplot as plt
 
 def run_rmsd():
-    rmsd = rms.RMSD(u, ref, select='backbone', groupselections=['protein'])
+    rmsd = rms.RMSD(u, start, select='backbone', groupselections=['protein'])
     return rmsd
 
 def plot_rmsd():
