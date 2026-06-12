@@ -32,6 +32,7 @@ p.add_argument("-r","--start", required=True, help="Reference structure for RMSD
 p.add_argument("-l","--length",required=True, help="Chain length of protein. All subunits must be identical", type=int)
 p.add_argument("-c","--cutoff", required=False, default=4.0, help="Cutoff distance (A) for interactions", type=float)
 p.add_argument("--color", help="color to use for line plots", default='maroon')
+p.add_argument("--ligand", help="name of ligand as shown in MD structure files")
 
 args = p.parse_args()
 
