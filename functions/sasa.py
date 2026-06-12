@@ -1,3 +1,5 @@
+#Written by Audrey D. Prendergast
+#UNTESTED
 import mdtraj as mdt
 import matplotlib.pyplot as plt
 
