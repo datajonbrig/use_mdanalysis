@@ -19,7 +19,7 @@ def calculate_rmsf():
     return rmsf
 
 def plot_rmsf():
-    rmsf = rmsf.rmsd.T
+    rmsf = rmsf.rmsf.T
     time = rmsf[1]/1000
     name = f"RMSF - {title}"
     plt.figure()
