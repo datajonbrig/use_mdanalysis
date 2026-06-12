@@ -19,3 +19,11 @@ def calculate_dssp_resi():
 
     for i, type in enumerate(structures):
         percent_array[i] = (dssp == type).sum(axis=0) / trajectory.n_frames * 100
+
+def calculate_dssp_global():
+    dsspg = "global dssp"
+    return dsspg
+
+def plot_dssp():
+    plt.plot()
+    
