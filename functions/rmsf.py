@@ -1,3 +1,5 @@
+#Written by Audrey D. Prendergast
+#UNTESTED
 import matplotlib.pyplot as plt
 import MDAnalysis as mda
 from MDAnalysis.analysis import align, rms

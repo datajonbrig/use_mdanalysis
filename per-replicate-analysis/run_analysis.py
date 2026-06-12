@@ -1,3 +1,5 @@
+#Written by Audrey D. Prendergast
+#UNTESTED
 import argparse
 import MDAnalysis as mda
 #analysis functions
