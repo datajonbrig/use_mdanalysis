@@ -28,4 +28,4 @@ def plot_maxdist(time, dist):
     plt.ylabel('Distance (Å)')
     plt.title(name)
     plt.savefig(outname)
-    plt.close
+    plt.close()
