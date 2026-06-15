@@ -1,3 +1,5 @@
+#Written by Audrey D. Prendergast
+#UNTESTED
 import pandas as pd
 import MDAnalysis as mda
 import matplotlib.pyplot as plt
