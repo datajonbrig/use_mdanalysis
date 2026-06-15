@@ -1,7 +1,5 @@
 #Written by Audrey D. Prendergast
 #UNTESTED
-#needed: process only protein not all atoms, global dssp, plotting for resi and global
-
 import mdtraj as mdt
 import numpy as np
 import pandas as pd
