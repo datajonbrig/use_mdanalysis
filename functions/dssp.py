@@ -51,5 +51,6 @@ def plot_dssp(ns, helix, sheet, coil):
     plt.legend(loc = "best")
     plt.xlabel('Time (ns)')
     plt.ylabel('Secondary Structure Percentage (%)')
-    plt.savefig()
+    outname = f'global_dssp_{out}.png'
+    plt.savefig(outname)
     plt.close()
