@@ -12,7 +12,7 @@ def sasa():
 
 def plot_sasa(trajectory, sasa):
     time = (trajectory.time)/1000
-    name = f"Solvent Accessible Surface Area - {title}"
+    name = f"Normalized Solvent Accessible Surface Area - {title}"
     plt.figure()
     plt.plot(time, sasa, color, linestyle='-')
     plt.title(name)
