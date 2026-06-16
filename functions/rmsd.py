@@ -3,9 +3,12 @@
 #NEEDS: modifications to plot nicely with multiple chains both independent and averaged
 from MDAnalysis.analysis import rms
 import matplotlib.pyplot as plt
+import numpy as np
 
 def run_rmsd():
     rmsd = rms.RMSD(u, start, select='backbone', groupselections=['protein'])
+    name = f'rmsd_{out}.csv'
+    np.savetxt(name, rmsd, delimiter=',')
     return rmsd
 
 def plot_rmsd():

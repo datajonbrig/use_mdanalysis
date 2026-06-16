@@ -13,6 +13,9 @@ def calculate_rog():
         rog.append(bb.radius_of_gyration())
     rog_data = pd.DataFrame({'Time (ns)': times, 
                              'Radius of Gyration (Å)':rog})
+    
+    name = f'rog_{out}.csv'
+    rog_data.to_csv(name, index=False)
     return rog_data
 
 def plot_rog(rog_data):
