@@ -12,6 +12,7 @@ from MDAnalysis.analysis import rms
 from matplotlib.colors import LogNorm
 
 def gen_fel():
+    prot = u.select_atoms('protein')
     rog_path = glob.glob('./rog_*.csv')[0]
     rmsd_path = glob.glob('./rmsd_*.csv')[0]
     rog = pd.read_csv(rog_path)
@@ -40,7 +41,41 @@ def gen_fel():
     ycenter = (yedges[:-1] + yedges[1:])/2
     x,y = np.meshgrid(xcenter, ycenter)
 
-    #PLOT
+    ### Identifying minima and saving representative pdb files
+    min_idx = np.unravel_index(np.nanargmin(FE), FE.shape)
+    minx = xcenter[min_idx[0]]
+    miny = ycenter[min_idx[1]]
+    print(f'Deepest minimum coordinates found at:')
+    print(f' --> RMSD: {minx:.2f} Å')
+    print(f' --> RoG: {miny:.2f} Å')
+
+    #tolerance window for ranges to pull structures from
+    rmsd_tol = 0.2
+    rog_tol = 0.2
+
+    frames = np.where((np.abs(rmsd - minx) <= rmsd_tol) & (np.abs(rog-miny) <= rog_tol))[0]
+
+    print(f'Found {len(frames)} frames matching the tolerance window')
+
+    nstructures = 3
+    indices = np.linspace(0, len(frames) - 1, nstructures)
+    target_frames = frames[indices]
+
+    u.trajectory[0]
+
+    for idx, nth_frame in enumerate(target_frames):
+        u.trajectory[nth_frame]
+
+        pdbname = f'fel_minima_frame{nth_frame}.pdb'
+
+        with mda.Writer(pdbname, prot.n_atoms) as W:
+            W.write(prot)
+        
+        print(f'Saved frame {nth_frame} as {pdbname}')
+
+    return smooth_e, x, y 
+
+def plot_fel(smooth_e, x, y):
     fig, ax = plt.subplots(6,4)
     contour = ax.contour(x,y, smooth_e.T, levels=25, cmap="seismic")
 
