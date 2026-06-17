@@ -1,5 +1,5 @@
 #Written by Audrey D. Prendergast
-#Fully functional as of 4/16/2026
+#ADD AVERAGE CALCS/PLOTS
 
 import MDAnalysis as mda
 import numpy as np
@@ -145,7 +145,7 @@ def split_residue_index(prot_resids, subunit_length):
 def collapse_across_subunits(contact_freq, local_resi):
     """
     Collapse residue contacts so residues appear once.
-    Uses max across subunits.
+    Uses mean across subunits.
     """
     n_local = local_resi.max()
     n_contacts = contact_freq.shape[1]
@@ -154,7 +154,7 @@ def collapse_across_subunits(contact_freq, local_resi):
 
     for r in range(1, n_local + 1):
         mask = local_resi == r
-        collapsed_contacts[r - 1] = np.max(contact_freq[mask], axis=0)
+        collapsed_contacts[r - 1] = np.mean(contact_freq[mask], axis=0)
 
     return collapsed_contacts
 

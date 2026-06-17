@@ -1,8 +1,5 @@
 # use_mdanalysis
-This analysis set runs: 
-eccentricity, eccentric occupancy, free popc interactions (**IF resname = POPX ONLY), protein-protein interactions (chain and residue), protein-membrane interactions by membrane component and protein residue, distance of protein-membrane midplane
-
-Entire per replicate analysis set can be run using the run_analysis.py script
+Available analysis: dssp, eccentricity, free energy landscape, rmsd, rmsf, rog, sasa, ligand-protein interactions, max protein-protein distance (aggregation indicator), protein-popx min distance, protein-popx interactions, popx-popx interactions, protein-protein interactions by chain and residue, protein-membrane lipid interactions (moieties), min distance of protein to membrane midplane (perturbation indicator)
 
 USAGE:
 
@@ -18,7 +15,17 @@ USAGE:
 
 -c,--cutoff = Cutoff distance (A) for interactions (optional, default = 4.0)
 
-average analyses must be run manually, modifying user inputs in the corresponding .py script
+--color = color to use for line plots
+(default = maroon)
+
+p.add_argument("--ligand", help="name of ligand as shown in MD structure files")
+p.add_argument("-k","--temp", help='Temperature of the system, in Kelvin', default = 310, type=float)
+p.add_argument("-a","--analysis",help="Which sets of analysis to run? All, membrane, protein, free lipids.")
+p.add_argument("-m","-memb", help="indicates a membrane is present in the system", action='store true')
+
+
+
+### Issues
 
 If there is additional analysis you would like added, submit an issue labeled "enhancement"
 

@@ -1,9 +1,10 @@
 #Written by Audrey D. Prendergast
+#add ability to only run membrane analysis when -memb option is indicated, else, skip
 #UNTESTED
 import argparse
 import MDAnalysis as mda
 #analysis functions
-import eccentricity_line
+import eccentricity
 import popx_popx_int
 import ppi_resi
 import prot_memb_interactions
@@ -33,7 +34,9 @@ p.add_argument("-l","--length",required=True, help="Chain length of protein. All
 p.add_argument("-c","--cutoff", required=False, default=4.0, help="Cutoff distance (A) for interactions", type=float)
 p.add_argument("--color", help="color to use for line plots", default='maroon')
 p.add_argument("--ligand", help="name of ligand as shown in MD structure files")
-
+p.add_argument("-k","--temp", help='Temperature of the system, in Kelvin', default = 310, type=float)
+p.add_argument("-a","--analysis",help="Which sets of analysis to run? All, membrane, protein, free lipids.")
+p.add_argument("-m","-memb", help="indicates a membrane is present in the system", action='store true')
 args = p.parse_args()
 
 
@@ -45,16 +48,16 @@ if not has_popx:
 # =========================
 # ECCENTRICITY
 # =========================
-eccentricity_line.init(
+eccentricity.init(
     top=args.top,
     traj=args.traj,
     out=args.out,
     title=args.title,
 )
 
-eccentricity_line.align_trajectory()
-eccentricity_line.calculate_eccentricity()
-eccentricity_line.plot_eccentricity()
+eccentricity.align_trajectory()
+eccentricity.calculate_eccentricity()
+eccentricity.plot_eccentricity()
 
 
 # =========================
