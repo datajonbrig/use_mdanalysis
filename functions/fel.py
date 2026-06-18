@@ -82,6 +82,8 @@ def plot_fel(smooth_e, x, y):
     cbar = fig.colorbar(contour, ax=ax)
     cbar.set_label("Free Energy (kcal/mol)", fontsize=12)
     ax.set_xlabel("RMSD (Å)", fontsize=12)
+    ax.set_xlim(0,10)
+    ax.set_ylim(0,10)
     ax.set_ylabel("RoG (Å)", fontsize=12)
     ax.set_title("Free Energy Landscape (RMSD v RoG)", fontsize=14, fontweight="bold")
     name = f'fel_{out}.png'
